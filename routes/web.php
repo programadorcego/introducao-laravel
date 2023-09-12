@@ -24,3 +24,8 @@ Route::get("hello", function(){
 Route::get("contato", function(){
 	return "<h1>Contato</h1>";
 });
+
+
+Route::get("greeting/{name}/{lastname?}", function(string $name, string $lastname = null){
+	return "Olá, meu nome é {$name} {$lastname}";
+});
