@@ -29,3 +29,19 @@ Route::get("contato", function(){
 Route::get("greeting/{name}/{lastname?}", function(string $name, string $lastname = null){
 	return "Olá, meu nome é {$name} {$lastname}";
 });
+
+Route::get("home", function(){
+	return '
+		<h1>Home</h1>
+		<p><a href="'.route("home").'">Home</a></p>
+		<p><a href="'.route("user", ["id" => 1]).'">Usuário</a></p>
+	';
+})->name("home");
+
+Route::get("user/{id}", function($id){
+	return '
+		<h1>Usuário</h1>
+		<p><a href="'.route("home").'">Home</a></p>
+		<p><a href="'.route("user", ["id" => 1]).'">Usuário</a></p>
+	';
+})->name("user");
