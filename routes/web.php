@@ -13,5 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", "HomeController@index");
-Route::get("user/{id}", "\\App\\Http\\Controllers\\UserController@show");
+Route::get("users", "Admin\\UserController@index");
+Route::get("user/{id}", "Admin\\UserController@show")->name("user");
