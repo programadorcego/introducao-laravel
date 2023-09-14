@@ -13,5 +13,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/", "\\App\\Http\\Controllers\\HomeController@index");
+Route::get("/", "HomeController@index");
 Route::get("user/{id}", "\\App\\Http\\Controllers\\UserController@show");
