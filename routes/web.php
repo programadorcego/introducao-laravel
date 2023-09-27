@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("users", "Admin\\UserController@index");
-Route::get("user/{id}/show", "Admin\\UserController@show")->name("user");
-Route::get("user/create", \Admin\UserCreate::class)->name("user.create");
-Route::get("user/edit", \Admin\UserEdit::class)->name("user.edit");
+Route::prefix("admin")->namespace("Admin\\")->group(function(){
+	Route::get("users", "UserController@index");
+	Route::get("user/{id}/show", "UserController@show")->name("user");
+	Route::get("user/create", \UserCreate::class)->name("user.create");
+	Route::get("user/edit", \UserEdit::class)->name("user.edit");
+});
