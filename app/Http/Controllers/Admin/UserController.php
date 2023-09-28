@@ -18,12 +18,14 @@ class UserController extends Controller
 	
 	public function index()
 	{
-		echo "<h1>Uusuários</h1>";
+		/*echo "<h1>Uusuários</h1>";
 		
 		foreach($this->users as $id => $user)
 		{
 			echo '<p><a href="'.route("user", ['id' => $id]).'">'.$user[0].'</a> | '.$user[1].'</p>';
-		}
+		}*/
+		
+		return view("admin.users.index");
 	}
 	
 	public function show(int $id)
