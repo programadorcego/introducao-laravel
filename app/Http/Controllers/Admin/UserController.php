@@ -30,8 +30,11 @@ class UserController extends Controller
 	
 	public function show(int $id)
 	{
-		echo "<h1>Usuário</h1>";
+		/*echo "<h1>Usuário</h1>";
 		
-		echo "<p>{$this->users[$id][0]} | {$this->users[$id][1]}</p>";
+		echo "<p>{$this->users[$id][0]} | {$this->users[$id][1]}</p>";*/
+		
+		$user = $this->users[$id];
+		return view('admin.users.show')->with("user", $user);
 	}
 }
