@@ -25,7 +25,8 @@ class UserController extends Controller
 			echo '<p><a href="'.route("user", ['id' => $id]).'">'.$user[0].'</a> | '.$user[1].'</p>';
 		}*/
 		
-		return view("admin.users.index");
+		$title = "Usuários";
+		return view("admin.users.index", compact("title"));
 	}
 	
 	public function show(int $id)
