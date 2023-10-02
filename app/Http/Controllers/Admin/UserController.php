@@ -26,7 +26,9 @@ class UserController extends Controller
 		}*/
 		
 		$title = "Usuários";
-		return view("admin.users.index", compact("title"));
+		$users = $this->users;
+		//$users = [];
+		return view("admin.users.index", compact("title", "users"));
 	}
 	
 	public function show(int $id)
@@ -35,7 +37,8 @@ class UserController extends Controller
 		
 		echo "<p>{$this->users[$id][0]} | {$this->users[$id][1]}</p>";*/
 		
+		$title = "Usuário";
 		$user = $this->users[$id];
-		return view('admin.users.show')->with("user", $user);
+		return view('admin.users.show', compact("title", "user"));
 	}
 }
