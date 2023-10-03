@@ -1,6 +1,10 @@
-@extends("layouts.master")
+@extends("layouts.admin")
 
 @section("title", $title)
+
+@push("css")
+	<link rel="stylesheet" href="{{ asset("assets/css/users.css") }}">
+@endpush
 
 @section("body")
 	<h1>{{ $title }}</h1>
