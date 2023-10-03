@@ -9,9 +9,29 @@
 @section("body")
 	<h1>{{ $title }}</h1>
 	
-	@forelse($users as $id => $user)
-		<p><a href="{{ route("user", $id) }}">{{ $user[0] }}</a></p>
+	<table>
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>Nome</th>
+				<th>E-mail</th>
+				<th>Ações</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+	@forelse($users as $user)
+		<tr>
+			<td>{{ $user->id }}</td>
+			<td><a href="{{ route("user", $user->id) }}">{{ $user->name }}</a></td>
+			<td>{{ $user->email }}</td>
+			<td></td>
+		</tr>
 	@empty
-		<p>Nenhum usuário cadastrado</p>
+		<tr>
+			<td colspan="4">Nenhum usuário cadastrado</td>
+		</tr>
 	@endforelse
+		</tbody>
+</table>
 @endsection

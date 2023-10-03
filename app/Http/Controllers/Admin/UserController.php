@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -26,8 +27,10 @@ class UserController extends Controller
 		}*/
 		
 		$title = "Usuários";
-		$users = $this->users;
+		//$users = $this->users;
 		//$users = [];
+		
+		$users = DB::select("SELECT id, name, email FROM users");
 		return view("admin.users.index", compact("title", "users"));
 	}
 	
@@ -38,7 +41,8 @@ class UserController extends Controller
 		echo "<p>{$this->users[$id][0]} | {$this->users[$id][1]}</p>";*/
 		
 		$title = "Usuário";
-		$user = $this->users[$id];
+		//$user = $this->users[$id];
+		$user = DB::select("SELECT id, name, email FROM users WHERE id = ?", [$id]);
 		return view('admin.users.show', compact("title", "user"));
 	}
 }

@@ -7,5 +7,5 @@
 	
 	<a href="{{ route("users") }}">Voltar</a>
 	
-	<p>{{ $user[0] }} | {{ $user[1] }}</p>
+	<p>{{ $user[0]->name }} | {{ $user[0]->email }}</p>
 @endsection
