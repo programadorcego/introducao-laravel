@@ -30,7 +30,7 @@ class UserController extends Controller
 		//$users = $this->users;
 		//$users = [];
 		
-		$users = DB::select("SELECT id, name, email FROM users");
+		$users = DB::table("users")->select('id', 'name', 'email')->get();
 		return view("admin.users.index", compact("title", "users"));
 	}
 	
@@ -42,13 +42,17 @@ class UserController extends Controller
 		
 		$title = "Usuário";
 		//$user = $this->users[$id];
-		$user = DB::select("SELECT id, name, email FROM users WHERE id = ?", [$id]);
+		//$user = DB::table("users")->select("id", "name", "email")->where('id', $id)->first();
+		$user = DB::table("users")->find($id);
 		return view('admin.users.show', compact("title", "user"));
 	}
 	
 	public function create()
 	{
-		$create = DB::insert("INSERT INTO users (name, email) VALUES (?, ?)", ["Usuário Teste", "teste@meuemail.com.br"]);
+		$create = DB::table("users")->insert([
+			'name' => 'Usuário Teste',
+			'email' => 'teste@meuemail.com.br',
+		]);
 		
 		if($create)
 		{
@@ -58,7 +62,7 @@ class UserController extends Controller
 	
 	public function update(int $id)
 	{
-		$update = DB::update("UPDATE users SET name = ? WHERE id = ?", ["Usuário Teste Update", $id]);
+		$update = DB::table("users")->where("id", $id)->update(['name' => 'Usuário Teste Update']);
 		
 		if($update)
 		{
@@ -68,7 +72,7 @@ class UserController extends Controller
 	
 	public function delete(int $id)
 	{
-		$delete = DB::delete("DELETE FROM users WHERE id = ?", [$id]);
+		$delete = DB::table("users")->where("id", $id)->delete();
 		
 		if($delete)
 		{
