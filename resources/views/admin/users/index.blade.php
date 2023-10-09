@@ -25,7 +25,7 @@
 			<td>{{ $user->id }}</td>
 			<td><a href="{{ route("user", $user->id) }}">{{ $user->name }}</a></td>
 			<td>{{ $user->email }}</td>
-			<td></td>
+			<td><a href="{{ route('user.delete', $user->id) }}">Remover</a></td>
 		</tr>
 	@empty
 		<tr>

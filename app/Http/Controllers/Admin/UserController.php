@@ -45,4 +45,34 @@ class UserController extends Controller
 		$user = DB::select("SELECT id, name, email FROM users WHERE id = ?", [$id]);
 		return view('admin.users.show', compact("title", "user"));
 	}
+	
+	public function create()
+	{
+		$create = DB::insert("INSERT INTO users (name, email) VALUES (?, ?)", ["Usuário Teste", "teste@meuemail.com.br"]);
+		
+		if($create)
+		{
+			return redirect()->route("users");
+		}
+	}
+	
+	public function update(int $id)
+	{
+		$update = DB::update("UPDATE users SET name = ? WHERE id = ?", ["Usuário Teste Update", $id]);
+		
+		if($update)
+		{
+			return redirect()->route("users");
+		}
+	}
+	
+	public function delete(int $id)
+	{
+		$delete = DB::delete("DELETE FROM users WHERE id = ?", [$id]);
+		
+		if($delete)
+		{
+			return redirect()->route("users");
+		}
+	}
 }
